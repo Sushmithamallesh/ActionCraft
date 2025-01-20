@@ -39,3 +39,13 @@ Thumbs.db
 # pnpm specific
 pnpm-lock.yaml
 .pnpm-debug.log
+
+# Video files
+content/automate/*
+!content/automate/.gitkeep
+
+# Generated content
+content/frames/*
+!content/frames/.gitkeep
+content/grid/*
+!content/grid/.gitkeep
