@@ -49,3 +49,4 @@ content/frames/*
 !content/frames/.gitkeep
 content/grid/*
 !content/grid/.gitkeep
+content/*
