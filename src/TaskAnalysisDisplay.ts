@@ -41,7 +41,7 @@ export class TaskAnalysisDisplay {
         await this.handleTechnicalElements();
         const automationType = await this.handleAutomationSelection();
         
-        await this.saveTaskInput();
+        await this.saveTaskInput(automationType);
 
         const config: AutomationConfig = {
             type: automationType,
@@ -196,9 +196,26 @@ export class TaskAnalysisDisplay {
         return choice;
     }
 
-    private async saveTaskInput(): Promise<void> {
+    private async saveTaskInput(selectedType: string): Promise<void> {
         try {
-            await fs.writeFile(AUTOMATION_FILE, JSON.stringify(this.taskInput, null, 2));
+            const automationInput = {
+                originalAnalysis: {
+                    technicalDetails: this.result.technicalDetails,
+                    possibleAutomations: this.result.userView.possibleAutomations,
+                    sequence: this.result.userView.actionSequence
+                },
+                userEdits: {
+                    type: this.taskInput.type,
+                    summary: this.taskInput.summary,
+                    sequence: this.taskInput.sequence,
+                    elements: this.taskInput.elements
+                },
+                automation: {
+                    selectedAutomationType: selectedType
+                }
+            };
+
+            await fs.writeFile(AUTOMATION_FILE, JSON.stringify(automationInput, null, 2));
         } catch (error) {
             console.error(chalk.red('\n❌ Failed to save task input:', error));
         }
