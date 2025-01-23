@@ -17,6 +17,22 @@ interface TaskInput {
     timestamp: string;
 }
 
+export interface AutomationInput {
+    originalAnalysis: {
+        technicalDetails: any;
+        possibleAutomations: string[];
+        sequence: string[];
+    };
+    userEdits: {
+        type: string;
+        summary: string;
+        sequence: string[];
+        elements: string[];
+    };
+    automation: {
+        selectedAutomationType: string;
+    };
+}
 // Remove the savedFilePath variable since we'll use a constant
 const AUTOMATION_FILE = 'content/automation_input.json';
 
@@ -198,7 +214,7 @@ export class TaskAnalysisDisplay {
 
     private async saveTaskInput(selectedType: string): Promise<void> {
         try {
-            const automationInput = {
+            const automationInput: AutomationInput = {
                 originalAnalysis: {
                     technicalDetails: this.result.technicalDetails,
                     possibleAutomations: this.result.userView.possibleAutomations,

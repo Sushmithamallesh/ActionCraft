@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "validate-video": "tsx src/test.ts"
+    "video-to-action": "tsx src/VideoToAction/videoToAction.ts",
+    "action-to-code": "tsx src/ActionToScript/generatecode.ts",
+    "script-runner": "tsx src/Script/automationRunner.ts"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,7 @@
     "get-video-duration": "^4.1.0",
     "inquirer": "^12.3.2",
     "openai": "^4.79.1",
-    "prompts": "^2.4.2",
+    "prompts": "^2.4.2",s
     "sharp": "^0.33.5",
     "zod": "^3.24.1"
   },

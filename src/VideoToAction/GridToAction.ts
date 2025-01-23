@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 import { promises as fs } from 'node:fs';
 import path from 'node:path';
 import type { ChatCompletionContentPartImage, ChatCompletionContentPartText } from 'openai/resources/chat/completions';
-import { config } from './config.js';
+import { config } from '../config.js';
 
 // Custom error types for better error handling
 class GridAnalysisError extends Error {
@@ -66,7 +66,7 @@ interface GridAnalyzerOptions {
     customPrompt?: string;
 }
 
-export class GridAnalyzer {
+export class GridToAction {
     private readonly openai: OpenAI;
     private readonly gridFolder: string;
     private readonly outputFile: string;
@@ -81,7 +81,7 @@ export class GridAnalyzer {
     };
 
     constructor(options: GridAnalyzerOptions = {}) {
-        this.options = { ...GridAnalyzer.DEFAULT_OPTIONS, ...options };
+        this.options = { ...GridToAction.DEFAULT_OPTIONS, ...options };
 
         const apiKey = this.options.apiKey || config.openai.apiKey;
         if (!apiKey) {
@@ -190,7 +190,7 @@ Output format (JSON):
             );
 
             const response = await this.openai.chat.completions.create({
-                model: "gpt-4o-mini",
+                model: "gpt-4o",
                 messages: [
                     {
                         role: "user",

@@ -1,10 +1,10 @@
 import { VideoFrameExtractor } from './VideoToGrid.js';
-import { GridAnalyzer } from './GridToAction.js';
+import { GridToAction } from './GridToAction.js';
 import { TaskAnalysisDisplay } from './TaskAnalysisDisplay.js';
 
 async function extractVideoFrames() {
     const extractor = new VideoFrameExtractor();
-    const analyzer = new GridAnalyzer();
+    const analyzer = new GridToAction();
     console.log('Starting frame extraction...');
     
     try {
