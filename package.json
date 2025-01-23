@@ -20,7 +20,7 @@
     "get-video-duration": "^4.1.0",
     "inquirer": "^12.3.2",
     "openai": "^4.79.1",
-    "prompts": "^2.4.2",s
+    "prompts": "^2.4.2",
     "sharp": "^0.33.5",
     "zod": "^3.24.1"
   },
